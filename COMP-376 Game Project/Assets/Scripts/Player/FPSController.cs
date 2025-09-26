@@ -12,8 +12,13 @@ public class FPSController : MonoBehaviour
     [Header("Look")]
     public float mouseSensitivity = 1f;
     public Transform cameraTransform;
-    
 
+    [Header("Head Bob")]
+    public float bobAmplitude = 0.05f;    // How far to move (meters)
+    public float bobFrequency = 6f;       // Speed of the bob
+
+    private Vector3 cameraTransformDefaultPos;
+    private float bobTimer;
     private CharacterController controller;
     private PlayerInputActions input;
     private Vector2 moveInput;
@@ -33,6 +38,9 @@ public class FPSController : MonoBehaviour
         input.Player.Look.canceled += ctx => lookInput = Vector2.zero;
 
         input.Player.Jump.performed += ctx => Jump();
+
+        Cursor.visible = false;
+        cameraTransformDefaultPos = cameraTransform.localPosition;
     }
     void OnEnable() => input.Player.Enable();
     void OnDisable() => input.Player.Disable();
@@ -42,6 +50,7 @@ public class FPSController : MonoBehaviour
     {
         HandleLook();
         HandleMovement();
+        HandleHeadBob();
     }
 
     void HandleMovement()
@@ -68,5 +77,27 @@ public class FPSController : MonoBehaviour
     {
         if (controller.isGrounded)
             verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+    void HandleHeadBob()
+    {
+        // Magnitude of movement input (0 if standing still)
+        bool isMoving = moveInput.sqrMagnitude > 0.01f && controller.isGrounded;
+
+        if (isMoving)
+        {
+            bobTimer += Time.deltaTime * bobFrequency;
+            float bobOffset = Mathf.Sin(bobTimer) * bobAmplitude;
+            cameraTransform.localPosition = cameraTransformDefaultPos + new Vector3(0, bobOffset, 0);
+        }
+        else
+        {
+            // Reset to default when not moving
+            bobTimer = 0;
+            cameraTransform.localPosition = Vector3.Lerp(
+                cameraTransform.localPosition,
+                cameraTransformDefaultPos,
+                Time.deltaTime * 5f
+            );
+        }
     }
 }
