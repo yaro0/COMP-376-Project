@@ -18,5 +18,6 @@ public struct QTEParams
 public enum QTEType
 {
     Mash,
-    Press
+    Press,
+    TimingBar
 }

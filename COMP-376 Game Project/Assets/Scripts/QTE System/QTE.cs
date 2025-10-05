@@ -8,6 +8,11 @@ public class QTE
     private int mashCount;
     private bool completed;
 
+    public float markerPosition;
+    private bool movingRight = true;
+    private float markerSpeed = 1.5f;
+    public Vector2 validZone;
+
     public KeyCode Key => parameters.key;
     public QTEType Type => parameters.type;
 
@@ -20,6 +25,15 @@ public class QTE
         onSuccess = success;
         onFail = fail;
         timer = p.timeLimit;
+
+        if(p.type == QTEType.TimingBar)
+        {;
+            markerSpeed = Random.Range(1.2f, 1.3f);
+            float zoneWidth = Random.Range(0.1f, 0.25f);
+            float center = Random.Range(zoneWidth / 2f, 1f - zoneWidth / 2f);
+            validZone = new Vector2(center - zoneWidth / 2f, center + zoneWidth / 2f);
+            markerPosition = 0f;
+        }
     }
 
     public void Update()
@@ -39,6 +53,25 @@ public class QTE
                 if (Input.GetKeyDown(parameters.key)) mashCount++;
                 if (mashCount >= parameters.mashTarget) Success();
                 break;
+            case QTEType.TimingBar:
+                UpdateTimingBar();
+                break;
+        }
+    }
+
+    private void UpdateTimingBar()
+    {
+        markerPosition += markerSpeed * Time.deltaTime * (movingRight ? 1 : -1);
+
+        if (markerPosition >= 1f) { markerPosition = 1f; movingRight = false; }
+        else if (markerPosition <= 0f) { markerPosition = 0f; movingRight = true; }
+
+        if (Input.GetKeyDown(parameters.key))
+        {
+            if (markerPosition >= validZone.x && markerPosition <= validZone.y)
+                Success();
+            else
+                Fail();
         }
     }
 
