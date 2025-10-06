@@ -129,8 +129,8 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.36899996, g: 0.34899998, b: 0.34099993, a: 1}
-    - _Scroll1: {r: 0.0048890635, g: 0, b: -0.0008620714, a: 0}
-    - _Scroll2: {r: 0.03911251, g: 0, b: -0.0068965713, a: 0}
+    - _Scroll1: {r: 0.010022864, g: 0, b: -0.0017672833, a: 0}
+    - _Scroll2: {r: 0.08018291, g: 0, b: -0.014138266, a: 0}
     - _SkyTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
