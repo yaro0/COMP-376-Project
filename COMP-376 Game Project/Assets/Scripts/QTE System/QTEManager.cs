@@ -12,7 +12,7 @@ public class QTEManager : MonoBehaviour
 
     public void StartQTE(QTEParams parameters, System.Action onSuccess, System.Action onFail)
     {
-        if (currentQTE != null) return; // already running
+        if (currentQTE != null) return;
         playerMovement.enabled = false;
 
         onSuccess += () => playerMovement.enabled = true;
