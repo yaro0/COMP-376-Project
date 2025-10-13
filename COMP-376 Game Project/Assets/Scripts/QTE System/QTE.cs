@@ -19,6 +19,15 @@ public class QTE
     public bool Completed => completed;
     public float Progress => 1f - (timer / parameters.timeLimit);
 
+    public float MashProgress
+    {
+        get
+        {
+            if (parameters.type != QTEType.Mash) return 0f;
+            return (float)mashCount / parameters.mashTarget;
+        }
+    }
+
     public QTE(QTEParams p, System.Action success, System.Action fail)
     {
         parameters = p;

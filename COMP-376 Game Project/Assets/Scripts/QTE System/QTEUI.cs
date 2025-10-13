@@ -6,9 +6,10 @@ public class QTEUI : MonoBehaviour
 {
     [Header("Shared")]
     public TextMeshProUGUI keyCodeText;
-
-    [Header("Timing Bar Mode")]
     public Image progressBar;
+
+    [Header("Mash Mode")]
+    public Image mashProgressBar;
     public GameObject mashGroup;
     
     [Header("Timing Bar Mode")]
@@ -42,8 +43,16 @@ public class QTEUI : MonoBehaviour
 
         progressBar.fillAmount = 1f - qte.Progress;
 
-        marker.rectTransform.anchorMin = new Vector2(qte.markerPosition, 0f);
-        marker.rectTransform.anchorMax = new Vector2(qte.markerPosition, 1f);
+        if(qte.Type == QTEType.TimingBar)
+        {
+            marker.rectTransform.anchorMin = new Vector2(qte.markerPosition, 0f);
+            marker.rectTransform.anchorMax = new Vector2(qte.markerPosition, 1f);
+        } 
+        else if (qte.Type == QTEType.Mash)
+        {
+            mashProgressBar.fillAmount = qte.MashProgress;
+        }
+
 
         if (qte.Completed) Destroy(gameObject);
     }
