@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 4296f34b1a50c2c4ba0306f1f844e3b6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6818718973673045262}
   - component: {fileID: 8422380235011946236}
   - component: {fileID: -1458998079117470620}
+  - component: {fileID: 459011728917076463}
   m_Layer: 5
   m_Name: InteractPrompt
   m_TagString: Untagged
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 10
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8422380235011946236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +191,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39617d0ffe252474884d316b7ae99d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobAmplitude: 0.1
+  bobFrequency: 2
+  arrowImage: {fileID: 1185089787199170172}
+  glowSpeed: 2
+  glowIntensity: 0.5
+--- !u!225 &459011728917076463
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8660744690643296888}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

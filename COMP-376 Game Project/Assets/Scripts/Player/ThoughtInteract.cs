@@ -11,6 +11,7 @@ public class ThoughtInteract : Interact
     private GameObject promptInstance;
     private bool hasInteracted = false;
     public Transform promptAnchor;
+    public float FadeOutLength = 1f;
 
     private void Start()
     {
@@ -23,7 +24,6 @@ public class ThoughtInteract : Interact
     }
     void OnEnable()
     {
-        // Subscribe this method to the interaction event
         GetInteractEvent.HasInteracted += OnPlayerInteracted;
     }
 
@@ -34,7 +34,6 @@ public class ThoughtInteract : Interact
 
     void OnPlayerInteracted()
     {
-        // When the player interacts, display the message
         if (!hasInteracted) {
             hasInteracted = true;
             UIManager.Instance.ShowMessage(playerThought);
@@ -44,8 +43,13 @@ public class ThoughtInteract : Interact
             UIManager.Instance.ShowMessage(afterInteractThought);
         }
         if (promptInstance)
-        {
-            promptInstance.SetActive(false);
+        {   
+            var billboardUI = promptInstance.GetComponent<BillboardUI>();
+            if (billboardUI != null) { billboardUI.FadeOut(FadeOutLength); }
+            else
+            {
+                promptInstance.SetActive(false);
+            }
         }
            
     }
