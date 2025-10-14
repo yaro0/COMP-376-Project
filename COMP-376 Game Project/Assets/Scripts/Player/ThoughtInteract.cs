@@ -24,12 +24,12 @@ public class ThoughtInteract : Interact
     }
     void OnEnable()
     {
-        GetInteractEvent.HasInteracted += OnPlayerInteracted;
+        GetInteractEvent.HasInteracted += OnPlayerInteracted; //Subscribes the method to the HasInteracted event
     }
 
     void OnDisable()
     {
-        GetInteractEvent.HasInteracted -= OnPlayerInteracted;
+        GetInteractEvent.HasInteracted -= OnPlayerInteracted; //Unsubscribes the method to the HasInteracted event
     }
 
     void OnPlayerInteracted()

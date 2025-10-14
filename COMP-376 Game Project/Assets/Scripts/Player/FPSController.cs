@@ -116,4 +116,9 @@ public class FPSController : MonoBehaviour
             if (interactScript) interactScript.CallInteract(this);
         }
     }
+
+    public bool IsMoving()
+    {
+        return moveInput.sqrMagnitude > 0.01f && controller.isGrounded;
+    }
 }
