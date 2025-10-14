@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
 public class PlayerStats : MonoBehaviour
-{
+{   
+    public static PlayerStats Instance;
+
     [Header("Stats")]
     [Range(0, 100)] public float sanity = 100f;
     [Range(0, 100)] public float energy = 100f;
@@ -17,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     private FPSController controller;
     void Awake()
     {
+        if (Instance == null) Instance = this;
         controller = GetComponent<FPSController>();
     }
     private void Start()
