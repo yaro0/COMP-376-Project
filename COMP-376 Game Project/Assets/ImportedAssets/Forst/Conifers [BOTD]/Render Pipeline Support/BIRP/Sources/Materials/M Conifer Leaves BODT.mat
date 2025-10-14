@@ -109,7 +109,7 @@ Material:
     - _DetailMode: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
-    - _EdgeFlutterInfluence: 0
+    - _EdgeFlutterInfluence: 0.02
     - _EnableAdvancedEdgeBending: 1
     - _EnableLeafTurbulence: 1
     - _EnableShadowMap: 0
@@ -121,7 +121,7 @@ Material:
     - _IsBark: 0
     - _LODTerrain: 1
     - _LeafTumbling: 0
-    - _LeafTurbulence: 0.1
+    - _LeafTurbulence: 0
     - _MainWind: 0
     - _Metallic: 0
     - _Mode: 3
@@ -136,8 +136,8 @@ Material:
     - _Tangents: 0
     - _TimeOffset: 0.25
     - _TranslucencyStrength: 0.5
-    - _TumbleFrequency: 0.6
-    - _TumbleStrength: 0.012
+    - _TumbleFrequency: 0.19
+    - _TumbleStrength: 0.005
     - _UVSec: 0
     - _UseArrays: 0
     - _UseDetails: 0
@@ -146,7 +146,7 @@ Material:
     m_Colors:
     - _AdvancedEdgeBending: {r: 0.6, g: 1.3, b: 0, a: 0}
     - _AverageCol: {r: 1, g: 1, b: 1, a: 0.5}
-    - _BaseWindMultipliers: {r: 0.6, g: 1, b: 1, a: 0}
+    - _BaseWindMultipliers: {r: 0.3, g: 0.5, b: 0.5, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HueVariation: {r: 0, g: 0.9, b: 0.8255172, a: 0.1}

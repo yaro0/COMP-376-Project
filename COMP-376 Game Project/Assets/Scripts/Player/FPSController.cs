@@ -39,6 +39,8 @@ public class FPSController : MonoBehaviour
 
         input.Player.Jump.performed += ctx => Jump();
 
+        input.Player.Interact.performed += ctx => PlayerInteract();
+
         Cursor.visible = false;
         cameraTransformDefaultPos = cameraTransform.localPosition;
     }
@@ -99,5 +101,24 @@ public class FPSController : MonoBehaviour
                 Time.deltaTime * 5f
             );
         }
+    }
+    void PlayerInteract()
+    {
+        var layermask0 = 1 << 0;
+        var layermask3=1 << 3;
+        var finalMask= layermask0 | layermask3; //Selects the correct layers to block the raycasts
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+        if(Physics.Raycast(ray, out hit, 3, finalMask))
+        {
+            Interact interactScript = hit.transform.GetComponent<Interact>();
+            if (interactScript) interactScript.CallInteract(this);
+        }
+    }
+
+    public bool IsMoving()
+    {
+        return moveInput.sqrMagnitude > 0.01f && controller.isGrounded;
     }
 }
