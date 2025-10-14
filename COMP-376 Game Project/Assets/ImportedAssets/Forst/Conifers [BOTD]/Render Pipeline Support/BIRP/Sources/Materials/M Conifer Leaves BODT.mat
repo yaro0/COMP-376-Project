@@ -137,7 +137,7 @@ Material:
     - _TimeOffset: 0.25
     - _TranslucencyStrength: 0.5
     - _TumbleFrequency: 0.19
-    - _TumbleStrength: 0.02
+    - _TumbleStrength: 0.005
     - _UVSec: 0
     - _UseArrays: 0
     - _UseDetails: 0
